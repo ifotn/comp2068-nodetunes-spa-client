@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ArtistComponent } from './artist/artist.component';
+import { ArtistService } from "./artist.service";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -12,9 +14,10 @@ import { ArtistComponent } from './artist/artist.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ArtistService],
   bootstrap: [ArtistComponent]
 })
 export class AppModule { }
