@@ -10,6 +10,7 @@ import { ArtistService } from "../artist.service";
 })
 export class ArtistComponent implements OnInit {
   artists: any
+  name: string | undefined
 
   constructor(private service: ArtistService) { }
 
@@ -22,6 +23,25 @@ export class ArtistComponent implements OnInit {
     this.service.getArtists().subscribe(artists => {
       this.artists = artists
     })
+  }
+
+  addArtist(): void {
+    // create & populate new artist object
+    let artist = {
+      name: this.name
+    }
+
+    // call the service and pass the new object to be saved
+    this.service.addArtist(artist).subscribe(artist => {
+      // refresh the list
+      this.getArtists()
+      // clear the form
+      this.clearForm()
+    })
+  }
+
+  clearForm(): void {
+    this.name = undefined
   }
 
 }

@@ -15,5 +15,12 @@
   </div>
   <div class="col-md-5 bg-light m-1 p-3">
     <h2>Details</h2>
+    <form>
+      <fieldset class="form-group m-3">
+        <label class="control-label col-2">Name:</label>
+        <input name="name" id="name" required [(ngModel)]="name" />
+      </fieldset>
+      <button class="btn btn-primary offset-2" (click)="addArtist()">Save</button>
+    </form>
   </div>
 </div>
