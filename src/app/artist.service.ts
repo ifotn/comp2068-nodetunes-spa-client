@@ -27,4 +27,9 @@ export class ArtistService {
   addArtist(artist: any) {
     return this.http.post(this.apiServer + '/api/artists', artist, { headers: headers })
   }
+
+  // DELETE
+  deleteArtist(_id: string) {
+    return this.http.delete(this.apiServer + '/api/artists/' + _id, { headers: headers })
+  }
 }

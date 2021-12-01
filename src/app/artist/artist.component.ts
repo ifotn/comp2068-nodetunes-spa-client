@@ -11,6 +11,7 @@ import { ArtistService } from "../artist.service";
 export class ArtistComponent implements OnInit {
   artists: any
   name: string | undefined
+  _id: string | undefined
 
   constructor(private service: ArtistService) { }
 
@@ -42,6 +43,22 @@ export class ArtistComponent implements OnInit {
 
   clearForm(): void {
     this.name = undefined
+    this._id = undefined
+  }
+
+  selectArtist(_id: string, name: string) {
+    // populate input form w/selected artist properties
+    this._id = _id
+    this.name = name
+  }
+
+  deleteArtist(_id: string): void {
+    if (confirm('Are you sure?')) {
+      this.service.deleteArtist(_id).subscribe(response => {
+        this.getArtists()
+        this.clearForm()
+      })
+    }
   }
 
 }
