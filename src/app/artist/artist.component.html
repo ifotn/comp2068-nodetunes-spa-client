@@ -21,10 +21,28 @@
         <input name="name" id="name" required [(ngModel)]="name" />
       </fieldset>
       <button class="btn btn-primary offset-2" (click)="addArtist()" *ngIf="!_id">Add</button>
-      <button class="btn btn-primary offset-2" *ngIf="_id">Update</button>
+      <button class="btn btn-primary offset-2" (click)="updateArtist()" *ngIf="_id">Update</button>
       <button class="btn btn-danger m-1" (click)="deleteArtist(_id)" *ngIf="_id">Delete</button>
       <button class="btn btn-primary m-1" (click)="clearForm()">Clear</button>
       <input type="hidden" id="_id" name="_id" [(ngModel)]="_id" />
     </form>
+    <div *ngIf="_id">
+      <h3>Add an Album</h3>
+      <form>
+        <fieldset class="form-group m-3">
+          <label class="control-label col-2">Title:</label>
+          <input name="title" id="title" required [(ngModel)]="title" />
+        </fieldset>
+        <fieldset class="form-group m-3">
+          <label class="control-label col-2">Year:</label>
+          <input name="year" id="year" required type="number" [(ngModel)]="year" />
+        </fieldset>
+        <fieldset class="form-group m-3">
+          <label class="control-label col-2">5-Star Rating:</label>
+          <input name="rating" id="rating" required type="number" min="1" max="5" [(ngModel)]="rating" />
+        </fieldset>
+        <button class="btn btn-primary offset-2" (click)="addAlbum()">Save</button>
+      </form>
+    </div>
   </div>
 </div>

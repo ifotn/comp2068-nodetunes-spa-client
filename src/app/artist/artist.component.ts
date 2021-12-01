@@ -12,6 +12,9 @@ export class ArtistComponent implements OnInit {
   artists: any
   name: string | undefined
   _id: string | undefined
+  title: string | undefined
+  year: number | undefined
+  rating: number | undefined
 
   constructor(private service: ArtistService) { }
 
@@ -44,6 +47,9 @@ export class ArtistComponent implements OnInit {
   clearForm(): void {
     this.name = undefined
     this._id = undefined
+    this.title = undefined
+    this.year = undefined
+    this.rating = undefined
   }
 
   selectArtist(_id: string, name: string) {
@@ -59,6 +65,33 @@ export class ArtistComponent implements OnInit {
         this.clearForm()
       })
     }
+  }
+
+  updateArtist() {
+    // create new object populated from form values
+    let artist = {
+      _id: this._id,
+      name: this.name
+    }
+
+    this.service.updateArtist(artist).subscribe(response => {
+      this.getArtists()
+      this.clearForm()
+    })
+  }
+
+  //addAlbum(title: string, year: number, rating: number) {
+  addAlbum() {
+    let album = {
+      title: this.title,
+      year: this.year,
+      rating: this.rating
+    }
+
+    this.service.addAlbum(<string>this._id, album).subscribe(response => {
+      this.getArtists()
+      this.clearForm()
+    })
   }
 
 }

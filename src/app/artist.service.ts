@@ -32,4 +32,15 @@ export class ArtistService {
   deleteArtist(_id: string) {
     return this.http.delete(this.apiServer + '/api/artists/' + _id, { headers: headers })
   }
+
+  // UPDATE
+  updateArtist(artist: any) {
+    return this.http.put(this.apiServer + '/api/artists/' + artist._id, artist, { headers: headers })
+  }
+
+  // ADD ALBUM TO ARTIST
+  addAlbum(_id: string, album: any) {
+    return this.http.post(this.apiServer + '/api/artists/add-album/' + _id, album, { headers: headers })
+  }
+
 }
